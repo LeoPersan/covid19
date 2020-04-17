@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID19</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        window.addEventListener('load', () => {
+            (function (nav) {
+                let button = nav.querySelector('button');
+                let ul = nav.querySelector('ul');
+                button.addEventListener('click', () => {
+                    if (ul.offsetHeight > 0)
+                        ul.style.height = '0px';
+                    else
+                        ul.style.height = ul.scrollHeight+'px';
+                })
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth >= 992)
+                        ul.style.removeProperty('height');
+                })
+            })(document.querySelector('nav'));
+            (function (hearts) {
+                hearts.forEach(heart => {
+                    heart.addEventListener('click', () => {
+                        if (heart.classList.contains('fas')) {
+                            heart.classList.remove('fas');
+                            heart.classList.add('far');
+                            heart.innerText = parseInt(heart.innerText)-1;
+                        } else {
+                            heart.classList.remove('far');
+                            heart.classList.add('fas');
+                            heart.innerText = parseInt(heart.innerText)+1;
+                        }
+                    })
+                });
+            })(document.querySelectorAll('.fa-heart'));
+            (function(url) {
+                let xhttp = new XMLHttpRequest();
+                xhttp.open('GET',url,false);
+                xhttp.send();
+                let data = JSON.parse(xhttp.responseText);
+                document.querySelector('.deceased .number').innerText = data.deceased;
+                document.querySelector('.infected .number').innerText = data.infected;
+                document.querySelector('.letality .number').innerText = (data.deceased*100/data.infected).toFixed(2)+'%';
+            })('https://api.apify.com/v2/key-value-stores/TyToNta7jGKkpszMZ/records/LATEST?disableRedirect=true');
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <ul class="container">
+            <li>
+                <a href="#">Home</a target="_blank">
+            </li>
+            <li>
+                <a href="#world">Mundo</a target="_blank">
+            </li>
+            <li>
+                <a href="#brazil">Brasil</a target="_blank">
+            </li>
+            <li>
+                <a href="#footer">Links</a target="_blank">
+            </li>
+        </ul>
+        <button>
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    <header>
+        <div class="blur">
+            <div class="container">
+                <h1>COVID19</h1>
+                <h2>#FiqueEmCasa</h2>
+                <div class="data row">
+                    <div class="letality row">
+                        <span class="number"></span>
+                        Letalidade
+                    </div>
+                    <div class="deceased row">
+                        <span class="number"></span>
+                        Mortos
+                    </div>
+                    <div class="infected row">
+                        <span class="number"></span>
+                        Infectados
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <div class="world news">
+            <a name="world"></a>
+            <h3>Mundo</h3>
+            <div class="row">
+                <div class="new">
+                    <div class="shadow">
+                        <button>
+                            <i class="fas fa-heart">5</i>
+                        </button>
+                        <a href="https://oglobo.globo.com/mundo/a-medida-que-casos-da-covid-19-aumentam-no-ira-pais-afrouxa-isolamento-mortes-passam-de-4500-24368197" target="_blank">
+                            <figure style="background-image: url('img/new1.jpg');"></figure>
+                            <h4 class="info">À medida que casos da Covid-19 aumentam no Irã, país afrouxa isolamento; mortes passam de 4.500</h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="new">
+                    <div class="shadow">
+                        <button>
+                            <i class="far fa-heart">1</i>
+                        </button>
+                        <a href="https://noticias.r7.com/saude/aumenta-o-numero-de-novos-casos-da-covid-19-na-italia-16042020" target="_blank">
+                            <figure style="background-image: url('img/new2.jpg');"></figure>
+                            <h4 class="info">Aumenta o número de novos casos da covid-19 na Itália</h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="new">
+                    <div class="shadow">
+                        <button>
+                            <i class="fas fa-heart">5</i>
+                        </button>
+                        <a href="https://www.correiobraziliense.com.br/app/noticia/mundo/2020/04/17/interna_mundo,845456/taiwan-coreia-do-sul-islandia-e-alemanha-conseguem-controlar-a-covid.shtml" target="_blank">
+                            <figure style="background-image: url('img/new3.jpg');"></figure>
+                            <h4 class="info">Taiwan, Coreia do Sul, Islândia e Alemanha conseguem controlar a Covid-19</h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="new">
+                    <div class="shadow">
+                        <button>
+                            <i class="far fa-heart">1</i>
+                        </button>
+                        <a href="https://xadrezverbal.com/2020/03/24/xadrez-verbal-e-atila-iamarino-especial-coronavirus-02/" target="_blank">
+                            <figure style="background-image: url('img/new4.jpg');"></figure>
+                        </a>
+                        <audio controls>
+                            <source src="https://content.blubrry.com/central3_podcasts___xadrez/Xadrez_Verbal_Especial_Coronavirus_02.mp3" type="audio/mpeg">
+                        </audio>
+                        <a href="https://xadrezverbal.com/2020/03/24/xadrez-verbal-e-atila-iamarino-especial-coronavirus-02/" target="_blank">
+                            <h4 class="info">Xadrez Verbal e Átia Iamarino – Especial Coronavírus #02</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="brazil news">
+            <a name="brazil"></a>
+            <h3>Brasil</h3>
+            <div class="row">
+                <div class="new">
+                    <div class="shadow">
+                        <button>
+                            <i class="fas fa-heart">5</i>
+                        </button>
+                        <figure>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/vEwDdXim8bQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </figure>
+                        <a href="https://www.youtube.com/watch?v=vEwDdXim8bQ" target="_blank">
+                            <h4 class="info">Live Coronavírus de 12/04 - Atualização e as Regiões do Brasil</h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="new">
+                    <div class="shadow">
+                        <button>
+                            <i class="far fa-heart">1</i>
+                        </button>
+                        <a href="https://g1.globo.com/am/amazonas/noticia/2020/04/17/apos-video-de-corpos-ao-lado-de-internados-hospital-de-manaus-recebe-camara-frigorifica-para-vitimas-de-covid-19.ghtml" target="_blank">
+                            <figure style="background-image: url('img/new6.jpg');"></figure>
+                            <h4 class="info">Após vídeo de corpos ao lado de internados, hospital de Manaus recebe câmara frigorífica para mortos por Covid-19</h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="new">
+                    <div class="shadow">
+                        <button>
+                            <i class="fas fa-heart">5</i>
+                        </button>
+                        <a href="https://gmconline.com.br/noticias/cidade/equipe-do-hospital-municipal-comemora-alta-de-paciente-com-covid-19" target="_blank">
+                            <figure style="background-image: url('img/new7.jpg');"></figure>
+                            <h4 class="info">Equipe do Hospital Municipal comemora alta de paciente com Covid-19</h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="new">
+                    <div class="shadow">
+                        <button>
+                            <i class="far fa-heart">1</i>
+                        </button>
+                        <a href="https://politica.estadao.com.br/noticias/geral,bastidores-gestores-de-sp-afirmam-que-saida-de-mandetta-nao-afeta-combate-a-coronavirus,70003274061" target="_blank">
+                            <figure style="background-image: url('img/new8.jpg');"></figure>
+                            <h4 class="info">Bastidores: Gestores de SP afirmam que saída de Mandetta não afeta combate à coronavírus</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <a name="footer"></a>
+        <div class="container">
+            <ul class="row">
+                <li>
+                    <a href="https://www.facebook.com/leonardopersan" target="_blank">
+                        <i class="fab fa-facebook-square"></i>leonardopersan
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/leonardopersan" target="_blank">
+                        <i class="fab fa-linkedin"></i>leonardopersan
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/leopersan" target="_blank">
+                        <i class="fab fa-github-square"></i>leopersan
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
