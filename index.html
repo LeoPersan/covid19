@@ -5,63 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COVID19</title>
     <link rel="stylesheet" href="styles.css">
-    <script>
-        window.addEventListener('load', () => {
-            (function (nav) {
-                let button = nav.querySelector('button');
-                let ul = nav.querySelector('ul');
-                button.addEventListener('click', () => {
-                    if (ul.offsetHeight > 0)
-                        ul.style.height = '0px';
-                    else
-                        ul.style.height = ul.scrollHeight+'px';
-                })
-                window.addEventListener('resize', () => {
-                    if (window.innerWidth >= 992)
-                        ul.style.removeProperty('height');
-                })
-            })(document.querySelector('nav'));
-            (function (hearts) {
-                hearts.forEach(heart => {
-                    heart.addEventListener('click', () => {
-                        if (heart.classList.contains('fas')) {
-                            heart.classList.remove('fas');
-                            heart.classList.add('far');
-                            heart.innerText = parseInt(heart.innerText)-1;
-                        } else {
-                            heart.classList.remove('far');
-                            heart.classList.add('fas');
-                            heart.innerText = parseInt(heart.innerText)+1;
-                        }
-                    })
-                });
-            })(document.querySelectorAll('.fa-heart'));
-            (function(url) {
-                let xhttp = new XMLHttpRequest();
-                xhttp.open('GET',url,false);
-                xhttp.send();
-                let data = JSON.parse(xhttp.responseText);
-                document.querySelector('.deceased .number').innerText = data.deceased;
-                document.querySelector('.infected .number').innerText = data.infected;
-                document.querySelector('.letality .number').innerText = (data.deceased*100/data.infected).toFixed(2)+'%';
-            })('https://api.apify.com/v2/key-value-stores/TyToNta7jGKkpszMZ/records/LATEST?disableRedirect=true');
-        });
-    </script>
+    <script src="scripts.js"></script>
 </head>
 <body>
     <nav>
         <ul class="container">
             <li>
-                <a href="#">Home</a target="_blank">
+                <a href="index.html">COVID-19</a target="_blank">
             </li>
             <li>
-                <a href="#world">Mundo</a target="_blank">
+                <a href="more.html">Saiba mais</a target="_blank">
             </li>
             <li>
-                <a href="#brazil">Brasil</a target="_blank">
+                <a href="contact.html">Contato</a target="_blank">
             </li>
             <li>
-                <a href="#footer">Links</a target="_blank">
+                <a href="https://leopersan.github.io/">LeoPersan</a target="_blank">
             </li>
         </ul>
         <button>
@@ -190,9 +149,9 @@
                         <button>
                             <i class="far fa-heart">1</i>
                         </button>
-                        <a href="https://politica.estadao.com.br/noticias/geral,bastidores-gestores-de-sp-afirmam-que-saida-de-mandetta-nao-afeta-combate-a-coronavirus,70003274061" target="_blank">
+                        <a href="https://gmconline.com.br/noticias/cidade/maioria-dos-infectados-por-covid-19-mora-no-centro-de-maringa" target="_blank">
                             <figure style="background-image: url('img/new8.jpg');"></figure>
-                            <h4 class="info">Bastidores: Gestores de SP afirmam que saída de Mandetta não afeta combate à coronavírus</h4>
+                            <h4 class="info">https://gmconline.com.br/noticias/cidade/maioria-dos-infectados-por-covid-19-mora-no-centro-de-maringa</h4>
                         </a>
                     </div>
                 </div>
